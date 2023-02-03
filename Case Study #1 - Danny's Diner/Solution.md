@@ -2,10 +2,10 @@
 
 ## 1. What is the total amount each customer spent at the restaurant?
 
-    SELECT customer_id, SUM(price) as amount_spent
-    FROM sales s
-        JOIN menu m ON s.product_id = m.product_id
-    GROUP BY customer_id;
+SELECT customer_id, SUM(price) as amount_spent
+FROM sales s
+    JOIN menu m ON s.product_id = m.product_id
+GROUP BY customer_id;
 
 #### Steps:
 
