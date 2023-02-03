@@ -9,8 +9,8 @@
 
 #### Steps:
 
-    -Use SUM and GROUP BY to find out total_sales contributed by each customer.
-    -Use JOIN to merge sales and menu tables as customer_id and price are from both tables.
+- Use SUM and GROUP BY to find out total_sales contributed by each customer.
+- Use JOIN to merge sales and menu tables as customer_id and price are from both tables.
 
 
 
