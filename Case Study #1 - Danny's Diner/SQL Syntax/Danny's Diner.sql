@@ -31,3 +31,20 @@ JOIN menu m
     ON s.product_id = m.product_id
 GROUP BY product_name
 ORDER BY most_purchased DESC;
+
+--5. Which item was the most popular for each customer?
+WITH most_popular_cte AS
+    (
+        SELECT s.customer_id, m.product_name, COUNT(s.product_id) AS order_count,
+            DENSE_RANK() OVER(PARTITION BY s.customer_id
+	    ORDER BY COUNT(s.product_id) DESC ) AS rank
+        FROM menu m
+            JOIN sales s
+            ON m.product_id = s.product_id
+        GROUP BY s.customer_id, m.product_name
+    )
+SELECT customer_id, product_name, order_count
+FROM most_popular_cte
+WHERE rank = 1;
+
+-- 6.Which item was purchased first by the customer after they became a member?
