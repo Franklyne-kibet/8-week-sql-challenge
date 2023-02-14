@@ -11,8 +11,8 @@ GROUP BY customer_id;
 
 ### Steps :
 
-- Use *SUM* and *GROUP BY* to find out `total_sales` contributed by each customer.
-- Use *JOIN* to merge `sales` and `menu` tables as `customer_id` and `price` are from both tables.
+- Use **SUM** and **GROUP BY** to find out `total_sales` contributed by each customer.
+- Use **JOIN** to merge `sales` and `menu` tables as `customer_id` and `price` are from both tables.
 
 ### Answer :
 
@@ -71,9 +71,9 @@ GROUP BY customer_id,product_name;
 
 ### Steps :
 
-- Create a temp table `order_sales_cte` and use *Windows function* with *DENSE_RANK* to create a new column `rank` based on `order_date`.
-- Instead of *ROW_NUMBER* or *RANK*, use *DENSE_RANK* as `order_date` is not time-stamped hence, there is no sequence as to which item is ordered first if 2 or more items are ordered on the same day.
-- Subsequently, *GROUP BY* all columns to show `rank = 1` only.
+- Create a temp table `order_sales_cte` and use **Windows function** with **DENSE_RANK** to create a new column `rank` based on `order_date`.
+- Instead of **ROW_NUMBER** or **RANK**, use **DENSE_RANK** as `order_date` is not time-stamped hence, there is no sequence as to which item is ordered first if 2 or more items are ordered on the same day.
+- Subsequently, **GROUP BY** all columns to show `rank = 1` only.
   
 ### Answer :
 
@@ -101,8 +101,8 @@ ORDER BY most_purchased DESC;
 
 ### Steps :
 
-- *COUNT* number of `product_id` and *ORDER BY* `most_purchased` by descending order.
-- Then, use *TOP 1* to filter highest number of purchased item.
+- **COUNT** number of `product_id` and **ORDER BY** `most_purchased` by descending order.
+- Then, use **TOP 1** to filter highest number of purchased item.
 
 ### Answer :
 
@@ -132,7 +132,7 @@ WHERE rank = 1;
 
 ### Steps :
 
-- Create a `most_popular_cte` and use *DENSE_RANK* to `rank` the `order_count` for each product by descending order for each customer.
+- Create a `most_popular_cte` and use **DENSE_RANK** to `rank` the `order_count` for each product by descending order for each customer.
 - Generate results where product `rank = 1` only as the most popular product for each customer.
   
 ### Answers :
@@ -171,7 +171,7 @@ WHERE rank = 1;
 
 ### Steps :
 
-- Create `first_purchased_cte` by using *windows function* and partitioning `customer_id `by ascending `order_date`. Then, filter `order_date` to be on or after `join_date`.
+- Create `first_purchased_cte` by using **windows function** and partitioning `customer_id`by ascending `order_date`. Then, filter `order_date` to be on or after `join_date`.
 - Then, filter table by `rank = 1` to show 1st item purchased by each customer.
 
 ### Answer :
@@ -206,7 +206,7 @@ WHERE rank = 1;
 
 ### Steps :
 
-- Create a `prior_purchase_cte`to create new column `rank` by using *Windows function* and partitioning `customer_id` by descending `order_date` to find out the last `order_date` before customer becomes a member.
+- Create a `prior_purchase_cte`to create new column `rank` by using **Windows function** and partitioning `customer_id` by descending `order_date` to find out the last `order_date` before customer becomes a member.
 - Filter `order_date` before `join_date`
 
 ### Answer :
@@ -235,7 +235,7 @@ GROUP BY s.customer_id;
 
 ### Steps :
 
-- Filter `order_date` before `join_date` and perform a *COUNT DISTINCT* on `product_id` and *SUM* the `total_sales` before becoming member.
+- Filter `order_date` before `join_date` and perform a **COUNT DISTINCT** on `product_id` and **SUM** the `total_sales` before becoming member.
 
 ### Answer : 
 
@@ -273,9 +273,9 @@ GROUP BY customer_id;
 Let’s breakdown the question.
 
 - Each $1 spent = 10 points.
-- But, sushi (product_id 1) gets 2x points, meaning each $1 spent = 20 points So, we use *CASE WHEN* to create conditional statements
+- But, sushi (product_id 1) gets 2x points, meaning each $1 spent = 20 points So, we use **CASE WHEN** to create conditional statements
 - If `product_id = 1`, then every $1 price multiply by 20 points
-- All other `product_id` that is not 1, multiply $1 by 10 points Using `price_points`, *SUM* the `points`.
+- All other `product_id` that is not 1, multiply $1 by 10 points Using `price_points`, **SUM** the `points`.
 
 ### Answer :
 
