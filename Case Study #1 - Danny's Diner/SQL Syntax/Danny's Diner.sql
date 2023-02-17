@@ -118,11 +118,11 @@ WITH dates_cte AS
     )
 SELECT d.customer_id,
    SUM(
-    CASE 
-        WHEN m.product_name = 'sushi' THEN 2 * 10 * m.price
-		WHEN s.order_date BETWEEN d.join_date AND d.valid_date THEN 2 * 10 * m.price
-	    ELSE 10 * m.price
-	END
+      CASE 
+       WHEN m.product_name = 'sushi' THEN 2 * 10 * m.price
+       WHEN s.order_date BETWEEN d.join_date AND d.valid_date THEN 2 * 10 * m.price
+       ELSE 10 * m.price
+       END
     ) AS total_points
 FROM dates_cte AS d
     JOIN sales AS s
