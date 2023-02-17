@@ -163,9 +163,9 @@ WITH summary_cte AS
     )
 SELECT *,
     CASE 
-    WHEN member = 'N' THEN NULL
-    ELSE
-        RANK() OVER(PARTITION BY customer_id, member
-        ORDER BY order_date) 
+        WHEN member = 'N' THEN NULL
+        ELSE
+            RANK() OVER(PARTITION BY customer_id, member
+            ORDER BY order_date) 
 	END AS ranking
 FROM summary_cte
