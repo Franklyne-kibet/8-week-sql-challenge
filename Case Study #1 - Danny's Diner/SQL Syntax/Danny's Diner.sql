@@ -96,9 +96,9 @@ WITH price_points AS
     (
     SELECT *,
       CASE 
-		WHEN product_id = 1 THEN price*20
-		ELSE price*10
-	  END AS points
+        WHEN product_id = 1 THEN price*20
+        ELSE price*10
+      END AS points
     FROM dbo.menu
     )
 SELECT customer_id, SUM(points) AS total_points
