@@ -119,9 +119,9 @@ WITH dates_cte AS
 SELECT d.customer_id,
     SUM(
         CASE 
-			WHEN m.product_name = 'sushi' THEN 2 * 10 * m.price
-			WHEN s.order_date BETWEEN d.join_date AND d.valid_date THEN 2 * 10 * m.price
-			ELSE 10 * m.price
+		    WHEN m.product_name = 'sushi' THEN 2 * 10 * m.price
+		    WHEN s.order_date BETWEEN d.join_date AND d.valid_date THEN 2 * 10 * m.price
+		    ELSE 10 * m.price
 		END
         ) AS total_points
 FROM dates_cte AS d
@@ -136,9 +136,9 @@ GROUP BY d.customer_id
 -- Join All The Things - Recreate the table with: customer_id, order_date, product_name, price, member (Y/N)
 SELECT s.customer_id, s.order_date, m.product_name, m.price,
     CASE 
-		WHEN mm.join_date > s.order_date THEN 'N'
-		WHEN mm.join_date <= s.order_date THEN 'Y'
-		ELSE 'N'
+	    WHEN mm.join_date > s.order_date THEN 'N'
+	    WHEN mm.join_date <= s.order_date THEN 'Y'
+	    ELSE 'N'
 	END AS member
 FROM sales AS s
     LEFT JOIN menu AS m
