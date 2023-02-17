@@ -167,5 +167,5 @@ SELECT *,
 		ELSE
 			RANK() OVER(PARTITION BY customer_id, member
 			ORDER BY order_date) 
-		END AS ranking
+	END AS ranking
 FROM summary_cte
