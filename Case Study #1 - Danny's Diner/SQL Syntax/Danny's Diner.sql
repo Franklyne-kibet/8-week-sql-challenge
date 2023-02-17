@@ -151,10 +151,10 @@ WITH summary_cte AS
     (
         SELECT s.customer_id, s.order_date, m.product_name, m.price,
             CASE 
-			    WHEN mm.join_date > s.order_date THEN 'N'
-			    WHEN mm.join_date <= s.order_date THEN 'Y'
-			ELSE 'N'
-		END AS member
+                WHEN mm.join_date > s.order_date THEN 'N'
+                WHEN mm.join_date <= s.order_date THEN 'Y'
+            ELSE 'N'
+        END AS member
         FROM sales AS s
             LEFT JOIN menu AS m
                 ON s.product_id = m.product_id
