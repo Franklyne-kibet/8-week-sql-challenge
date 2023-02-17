@@ -94,12 +94,12 @@ GROUP BY s.customer_id;
 -- 9.If each $1 spent equates to 10 points and sushi has a 2x points multiplier — how many points would each customer have? WITH price_point
 WITH price_points AS
     (
-        SELECT *,
-            CASE 
-			    WHEN product_id = 1 THEN price*20
-			    ELSE price*10
-		    END AS points
-        FROM dbo.menu
+    SELECT *,
+      CASE 
+		WHEN product_id = 1 THEN price*20
+		ELSE price*10
+	  END AS points
+    FROM dbo.menu
     )
 SELECT customer_id, SUM(points) AS total_points
 FROM price_points AS p
@@ -107,7 +107,7 @@ FROM price_points AS p
         ON p.product_id = s.product_id
 GROUP BY customer_id;
 
--- In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi — how many points do customer A and B have at the end of January?
+--10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi — how many points do customer A and B have at the end of January?
 
 WITH dates_cte AS
     (
@@ -117,12 +117,12 @@ WITH dates_cte AS
         FROM members AS m
     )
 SELECT d.customer_id,
-    SUM(
-      CASE 
-		WHEN m.product_name = 'sushi' THEN 2 * 10 * m.price
+   SUM(
+    CASE 
+        WHEN m.product_name = 'sushi' THEN 2 * 10 * m.price
 		WHEN s.order_date BETWEEN d.join_date AND d.valid_date THEN 2 * 10 * m.price
-		ELSE 10 * m.price
-		END
+	    ELSE 10 * m.price
+	END
     ) AS total_points
 FROM dates_cte AS d
     JOIN sales AS s
