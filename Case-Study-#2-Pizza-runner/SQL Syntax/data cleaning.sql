@@ -45,11 +45,14 @@ CASE
 INTO runner_orders_temp
 FROM dbo.runner_orders;
 
-ALTER TABLE runner_orders
+ALTER TABLE runner_orders_temp
 ALTER COLUMN pickup_time DATETIME;
 
-ALTER TABLE runner_orders
+ALTER TABLE runner_orders_temp
 ALTER COLUMN distance FLOAT;
 
-ALTER TABLE runner_orders
+ALTER TABLE runner_orders_temp
 ALTER COLUMN duration INT;
+
+ALTER TABLE pizza_names
+ALTER COLUMN pizza_name NVARCHAR(MAX);
